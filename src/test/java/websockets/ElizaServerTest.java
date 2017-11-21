@@ -61,7 +61,7 @@ public class ElizaServerTest {
 		ClientManager client = ClientManager.createClient();
 		client.connectToServer(new ElizaEndpointToComplete(list), configuration, new URI("ws://localhost:8025/websockets/eliza"));
 		synchronized(list) {list.wait();}
-		assertEquals(3, list.size());
+		assertEquals(2, list.size());
         assertEquals("Do you really think so?", list.get(0));
 	}
 

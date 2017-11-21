@@ -61,8 +61,8 @@ public class ElizaServerTest {
 		ClientManager client = ClientManager.createClient();
 		client.connectToServer(new ElizaEndpointToComplete(list), configuration, new URI("ws://localhost:8025/websockets/eliza"));
 		synchronized(list) {list.wait();}
-		assertEquals(2, list.size());
-        assertEquals("Do you really think so?", list.get(0));
+		assertEquals(1, list.size());
+        assertEquals("We were discussing you, not me.", list.get(0));
 	}
 
 	@After
@@ -99,7 +99,7 @@ public class ElizaServerTest {
         @Override
         public void onOpen(Session session, EndpointConfig config) {
 
-            session.getAsyncRemote().sendText("i think");
+            session.getAsyncRemote().sendText("I hate you");
 
             session.addMessageHandler(new ElizaMessageHandlerToComplete());
         }
